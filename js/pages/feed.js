@@ -29,8 +29,10 @@ const FeedPage = (() => {
       </div>`).join('');
 
     return `
-      <div class="page-with-nav page-enter">
-        <div style="max-width:1020px;margin:0 auto;padding:var(--space-8) var(--space-6)">
+      <div class="page-with-nav page-enter page-bg-container">
+        <div class="mesh-gradient"></div>
+        <div class="hero-grid-bg"></div>
+        <div style="max-width:1020px;margin:0 auto;padding:var(--space-8) var(--space-6);position:relative;z-index:1">
           <div class="feed-layout">
             <!-- Main Feed -->
             <div>

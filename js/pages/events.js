@@ -10,8 +10,10 @@ const EventsPage = (() => {
     const session = Auth.getSession();
     const events = await API.getEvents('upcoming');
     return `
-      <div class="page-with-nav page-enter">
-        <div class="page-container">
+      <div class="page-with-nav page-enter page-bg-container">
+        <div class="mesh-gradient"></div>
+        <div class="hero-grid-bg"></div>
+        <div class="page-container" style="position:relative;z-index:1">
           <!-- Hero -->
           <div class="events-hero animate-fadeUp">
             <div style="position:relative;z-index:1">

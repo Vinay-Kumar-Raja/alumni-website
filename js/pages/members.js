@@ -10,12 +10,14 @@ const MembersPage = (() => {
     const depts   = [...new Set(users.map(u=>u.department))].sort();
 
     return `
-      <div class="page-with-nav page-enter">
-        <div class="page-container">
+      <div class="page-with-nav page-enter page-bg-container">
+        <div class="mesh-gradient"></div>
+        <div class="hero-grid-bg"></div>
+        <div class="page-container" style="position:relative;z-index:1">
           <div style="margin-bottom:var(--space-8)">
             <div class="section-label">Alumni Network</div>
             <h1 style="font-family:var(--font-display);font-size:var(--fs-4xl);font-weight:800;margin-bottom:var(--space-2)">
-              <span class="text-gradient">Meet Your Alumniverse</span>
+              <span class="text-gradient text-shimmer">Meet Your Alumniverse</span>
             </h1>
             <p style="color:var(--clr-text-muted)">${users.length} verified alumni from around the world.</p>
           </div>

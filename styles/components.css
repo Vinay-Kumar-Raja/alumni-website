@@ -37,7 +37,8 @@
   color: #fff;
   border-radius: var(--radius-full);
 }
-.btn-primary:hover { opacity: 0.9; transform: none; box-shadow: none; }
+.btn-primary:hover { opacity: 0.9; transform: scale(1.02); box-shadow: var(--shadow-md); }
+.btn-primary:active { transform: scale(0.98); }
 
 .btn-ghost {
   background: transparent;
@@ -128,7 +129,7 @@
   overflow: hidden;
   transition: all var(--transition-base);
 }
-.card:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
 .card-inner { padding: var(--space-6); }
 .card-header {
   padding: var(--space-5) var(--space-6);
@@ -319,7 +320,8 @@
 .stat-label {
   font-size: var(--fs-sm);
   color: var(--clr-text-muted);
-  font-weight: 500;
+  font-weight: 600;
+  opacity: 0.9;
 }
 .stat-icon {
   position: absolute;

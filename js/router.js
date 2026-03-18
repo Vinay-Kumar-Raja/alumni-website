@@ -110,6 +110,12 @@ const Router = (() => {
       // Update nav
       Components.renderNav();
 
+      // Re-initialize visual effects
+      setTimeout(() => {
+        Components.initScrollReveal();
+        Components.initCustomCursor();
+      }, 50);
+
       // Render page
       const html = await pageObj.render(mergedParams);
       const content = document.getElementById('page-content');
@@ -124,17 +130,17 @@ const Router = (() => {
 
       // Update document title
       const titles = {
-        '/':               'Alumni Connect — Home',
-        '/login':          'Sign In — Alumni Connect',
-        '/forgot-password':'Forgot Password — Alumni Connect',
-        '/reset-password': 'Reset Password — Alumni Connect',
-        '/dashboard':      'Dashboard — Alumni Connect',
-        '/feed':           'Feed — Alumni Connect',
-        '/chat':           'Chat — Alumni Connect',
-        '/events':         'Events — Alumni Connect',
-        '/members':        'Members — Alumni Connect',
-        '/profile':        'Profile — Alumni Connect',
-        '/admin':          'Admin Portal — Alumni Connect',
+        '/':               'Seeyami Nursery and Primary School — Home',
+        '/login':          'Sign In — Seeyami Nursery and Primary School',
+        '/forgot-password':'Forgot Password — Seeyami Nursery and Primary School',
+        '/reset-password': 'Reset Password — Seeyami Nursery and Primary School',
+        '/dashboard':      'Dashboard — Seeyami Nursery and Primary School',
+        '/feed':           'Feed — Seeyami Nursery and Primary School',
+        '/chat':           'Chat — Seeyami Nursery and Primary School',
+        '/events':         'Events — Seeyami Nursery and Primary School',
+        '/members':        'Members — Seeyami Nursery and Primary School',
+        '/profile':        'Profile — Seeyami Nursery and Primary School',
+        '/admin':          'Admin Portal — Seeyami Nursery and Primary School',
       };
       document.title = titles[path] || 'Alumni Connect';
 

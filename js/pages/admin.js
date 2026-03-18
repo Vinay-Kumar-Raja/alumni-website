@@ -11,7 +11,9 @@ const AdminPage = (() => {
       return `<div class="page-with-nav page-enter"><div class="page-container">${Components.emptyState('🚫','Access Denied','You do not have administrator privileges.')}</div></div>`;
     }
     return `
-      <div class="page-with-nav page-enter">
+      <div class="page-with-nav page-enter page-bg-container">
+        <div class="mesh-gradient"></div>
+        <div class="hero-grid-bg"></div>
         <div class="admin-layout">
           <!-- Admin Sidebar -->
           <aside class="admin-sidebar">
@@ -57,7 +59,7 @@ const AdminPage = (() => {
     const audit = await API.getAuditLog(5);
     return `
       <div class="admin-header">
-        <h1 class="admin-title">Dashboard Overview</h1>
+        <h1 class="admin-title text-shimmer">Dashboard Overview</h1>
         <p class="admin-subtitle">Platform health and activity at a glance.</p>
       </div>
       <div class="stats-grid" style="margin-bottom:var(--space-8)">
@@ -377,7 +379,7 @@ function filterAdminByStatus(status) {
     : status === 'locked'  ? allUsers.filter(u=>u.locked)
     : allUsers.filter(u=>u.approved && !u.locked);
   const tbody = document.querySelector('#admin-users-table tbody');
-  if (tbody) tbody.innerHTML = filtered.map(u => AdminPage._renderSection ? '' : '').join('');
+  if (tbody) tbody.innerHTML = filtered.map(u => AdminPage._userRow ? AdminPage._userRow(u) : userRow(u)).join('');
   // Re-render the section fully for simplicity
   switchAdminSection('users');
 }

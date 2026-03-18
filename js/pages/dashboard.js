@@ -18,8 +18,10 @@ const DashboardPage = (() => {
     ];
 
     return `
-      <div class="page-with-nav page-enter">
-        <div class="page-container">
+      <div class="page-with-nav page-enter page-bg-container">
+        <div class="mesh-gradient"></div>
+        <div class="hero-grid-bg"></div>
+        <div class="page-container" style="position:relative;z-index:1">
           <!-- Welcome Banner -->
           <div class="dashboard-welcome animate-fadeUp">
             <div>
@@ -43,7 +45,7 @@ const DashboardPage = (() => {
               { icon:'📅', label:'Events Attending', val: Store.findAll('events', e => e.attendees.includes(session.userId)).length },
               { icon:'💬', label:'Channels Joined', val: Store.findAll('channels', c => c.members.includes(session.userId)).length },
             ].map(s => `
-              <div class="stat-card animate-fadeUp">
+              <div class="stat-card reveal reveal-up">
                 <div class="stat-icon" aria-hidden="true">${s.icon}</div>
                 <div class="stat-value">${s.val}</div>
                 <div class="stat-label">${s.label}</div>
@@ -53,7 +55,7 @@ const DashboardPage = (() => {
           <!-- Main content grid -->
           <div class="dashboard-grid">
             <!-- Left: Upcoming Events + Recent Posts -->
-            <div>
+            <div class="reveal reveal-up">
               <div class="card" style="margin-bottom:var(--space-6)">
                 <div class="card-header">
                   <div class="card-title">📅 Upcoming Events</div>

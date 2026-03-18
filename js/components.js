@@ -70,7 +70,7 @@ const Components = (() => {
 
     nav.innerHTML = `
       <div class="nav-brand" onclick="Router.go('/dashboard')" style="display:flex; align-items:center; gap:var(--space-2);">
-        <span style="font-weight: 700; font-family: var(--font-display); color: var(--clr-text); font-size:var(--fs-lg); letter-spacing:-0.03em;">Alumni <span style="font-weight:500; color:var(--clr-text-muted);">Network</span></span>
+        <span style="font-weight: 700; font-family: var(--font-display); color: var(--clr-text); font-size:var(--fs-lg); letter-spacing:-0.03em;">Seeyami Nursery <span style="font-weight:500; color:var(--clr-text-muted);">and Primary School</span></span>
       </div>
       <div class="nav-links" style="justify-content:center;">
         ${links.map(l => `
@@ -107,7 +107,13 @@ const Components = (() => {
     // Dropdown toggle
     document.getElementById('nav-avatar-btn')?.addEventListener('click', (e) => {
       e.stopPropagation();
-      document.getElementById('nav-dropdown')?.classList.toggle('hidden');
+      const dropdown = document.getElementById('nav-dropdown');
+      if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        dropdown.style.animation = 'revealScale 0.2s forwards';
+      } else {
+        dropdown.classList.add('hidden');
+      }
     });
     document.getElementById('notif-btn')?.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -186,7 +192,7 @@ const Components = (() => {
     const author = Store.findById('users', post.authorId);
     const liked = post.likes.includes(currentUserId);
     return `
-      <article class="post-card" id="post-${post.id}" aria-label="Post by ${author?.name}">
+      <article class="post-card reveal reveal-up" id="post-${post.id}" aria-label="Post by ${author?.name}">
         <div class="post-header">
           ${avatar(author, 40)}
           <div class="post-user-info">
@@ -249,7 +255,7 @@ const Components = (() => {
   // ── Member Card ───────────────────────────────────────
   function memberCard(user) {
     return `
-      <div class="member-card" onclick="Router.go('/profile/${user.id}')" tabindex="0" role="button" aria-label="View ${user.name}'s profile">
+      <div class="member-card reveal reveal-up" onclick="Router.go('/profile/${user.id}')" tabindex="0" role="button" aria-label="View ${user.name}'s profile">
         ${avatar(user, 72)}
         <div class="member-card-name">${Security.sanitizeHTML(user.name)}</div>
         <div class="member-card-role">${Security.sanitizeHTML(user.batch)} · ${Security.sanitizeHTML(user.department)}</div>
@@ -267,7 +273,7 @@ const Components = (() => {
     const attending = event.attendees.includes(currentUserId);
     const spotsLeft = event.maxCapacity - event.attendees.length;
     return `
-      <article class="event-card" id="event-${event.id}">
+      <article class="event-card reveal reveal-up" id="event-${event.id}">
         <div class="event-card-banner">
           <span role="img" aria-label="${event.category}">${event.emoji || '📅'}</span>
           <span class="badge badge-primary" style="position:absolute;top:var(--space-3);right:var(--space-3)">${event.category}</span>
@@ -316,5 +322,57 @@ const Components = (() => {
     </div>`;
   }
 
-  return { toast, openModal, closeModal, showLoader, hideLoader, avatar, renderNav, timeAgo, formatDate, formatTime, animateCounters, postCard, commentCard, memberCard, eventCard, confirm, spinner, emptyState, closeDropdown };
+  // ── Scroll Reveal ───────────────────────────────────
+  function initScrollReveal() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  // ── Custom Cursor ────────────────────────────────────
+  function initCustomCursor() {
+    const cursor = document.createElement('div');
+    cursor.id = 'custom-cursor';
+    cursor.style.cssText = `
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: rgba(0, 102, 204, 0.3);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease-out, background 0.3s ease;
+      transform: translate(-50%, -50%);
+      backdrop-filter: blur(2px);
+      display: none;
+    `;
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.display = 'block';
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    document.querySelectorAll('button, a, .clickable, .card, .post-card, .admin-nav-link, .chip').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+        cursor.style.background = 'rgba(0, 102, 204, 0.1)';
+        cursor.style.border = '1px solid rgba(0, 102, 204, 0.2)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursor.style.background = 'rgba(0, 102, 204, 0.3)';
+        cursor.style.border = 'none';
+      });
+    });
+  }
+
+  return { toast, openModal, closeModal, showLoader, hideLoader, avatar, renderNav, timeAgo, formatDate, formatTime, animateCounters, postCard, commentCard, memberCard, eventCard, confirm, spinner, emptyState, closeDropdown, initScrollReveal, initCustomCursor };
 })();

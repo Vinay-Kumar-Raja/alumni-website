@@ -85,13 +85,12 @@
   text-align: left;
 }
 .feature-card {
-  background: var(--clr-bg-card);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-2xl);
+  background: #fff;
+  border: none;
+  border-radius: var(--radius-xl);
   padding: var(--space-8);
-  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
-  animation: borderGlow 3s ease infinite;
 }
 .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-glow); }
 .feature-icon {
@@ -363,12 +362,14 @@
 .story-name { font-size: 10px; color: var(--clr-text-muted); max-width: 60px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .post-composer {
-  background: var(--clr-bg-card);
-  border: 1px solid var(--clr-border);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--clr-border-bright);
   border-radius: var(--radius-xl);
   padding: var(--space-5);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   margin-bottom: var(--space-5);
+  box-shadow: var(--shadow-sm);
 }
 .composer-row {
   display: flex;
@@ -818,8 +819,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.3), transparent 60%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,102,204,0.1), transparent 70%);
 }
+.events-hero h1 { color: var(--clr-text); }
+.events-hero p { color: var(--clr-text-muted); }
 
 /* ═══════════════════════════════════════
    RESPONSIVE

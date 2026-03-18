@@ -16,8 +16,9 @@ const ChatPage = (() => {
     const users = Store.get('users').filter(u => u.approved && u.id !== session.userId);
 
     return `
-      <div class="page-with-nav" style="height:100vh;overflow:hidden">
-        <div class="chat-layout" style="height:calc(100vh - var(--nav-h))">
+      <div class="page-with-nav page-bg-container" style="height:100vh;overflow:hidden">
+        <div class="mesh-gradient" style="opacity:0.6"></div>
+        <div class="chat-layout" style="height:calc(100vh - var(--nav-h));position:relative;z-index:1">
           <!-- Sidebar -->
           <aside class="chat-sidebar">
             <div class="chat-sidebar-header">

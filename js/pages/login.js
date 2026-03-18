@@ -15,7 +15,7 @@ const LoginPage = (() => {
         <div class="auth-split">
           <!-- Left showcase -->
           <div class="auth-showcase">
-            <div class="hero-badge" style="display:inline-flex;margin-bottom:var(--space-6)">🎓 Alumni Connect</div>
+            <div class="hero-badge" style="display:inline-flex;margin-bottom:var(--space-6)">🎓 Seeyami Nursery and Primary School</div>
             <h2 class="auth-showcase-title text-gradient">Your Alumni Journey Continues Here</h2>
             <p class="auth-showcase-text">Connect with thousands of alumni worldwide. Share stories, find opportunities, and relive memories.</p>
             <div class="auth-feature-list">

@@ -22,6 +22,10 @@ window.addEventListener('DOMContentLoaded', () => {
   // Init router (reads hash → renders initial page)
   Router.init();
 
+  // Global visual effects
+  Components.initCustomCursor();
+  Components.initScrollReveal();
+
   // Auto-redirect logged-in users away from auth pages
   // (handled inside Router nav guards)
 

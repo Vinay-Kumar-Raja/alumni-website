@@ -18,10 +18,12 @@ const ProfilePage = (() => {
     const eventCount = Store.findAll('events', e => e.attendees.includes(targetId)).length;
 
     return `
-      <div class="page-with-nav page-enter">
-        <div class="page-container" style="max-width:900px">
+      <div class="page-with-nav page-enter page-bg-container">
+        <div class="mesh-gradient"></div>
+        <div class="hero-grid-bg"></div>
+        <div class="page-container" style="max-width:900px;position:relative;z-index:1">
           <!-- Profile Card -->
-          <div class="card" style="margin-bottom:var(--space-6)">
+          <div class="card reveal reveal-up" style="margin-bottom:var(--space-6)">
             <div class="profile-cover"></div>
             <div class="profile-info">
               <div class="profile-top-row">
@@ -66,18 +68,18 @@ const ProfilePage = (() => {
           </div>
 
           <!-- Posts Tab -->
-          <div id="profile-tab-posts">
+          <div id="profile-tab-posts" class="reveal reveal-up">
             ${posts.length
               ? posts.map(p => Components.postCard(p, session.userId)).join('')
               : Components.emptyState('📸','No posts yet', isOwnProfile ? 'Share your first update on the Feed!' : `${user.name} hasn't posted yet.`)}
           </div>
 
           <!-- About Tab (hidden) -->
-          <div id="profile-tab-about" class="hidden">
+          <div id="profile-tab-about" class="hidden reveal reveal-up">
             <div class="card">
               <div class="card-inner">
                 <h3 style="font-family:var(--font-display);font-weight:700;margin-bottom:var(--space-5)">About</h3>
-                <div style="display:grid;gap:var(--space-4)">
+                <div style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); display:grid;gap:var(--space-4)">
                   ${[
                     {icon:'🎓',label:'Batch',val:user.batch},
                     {icon:'📚',label:'Department',val:user.department},
@@ -99,7 +101,7 @@ const ProfilePage = (() => {
           </div>
 
           <!-- Connections Tab (hidden) -->
-          <div id="profile-tab-connections" class="hidden">
+          <div id="profile-tab-connections" class="hidden reveal reveal-up">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)">
               <div class="card">
                 <div class="card-header"><div class="card-title">Followers (${(user.followers||[]).length})</div></div>
