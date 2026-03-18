@@ -153,8 +153,16 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  padding: 0 var(--space-6);
-  gap: var(--space-6);
+  padding: 0 var(--space-4);
+  gap: var(--space-3);
+  justify-content: space-between;
+}
+@media (max-width: 640px) {
+  #main-nav { padding: 0 var(--space-3); }
+  .nav-brand span { font-size: var(--fs-base); }
+  .nav-brand span span { display: none; } /* Hide 'and Primary School' on small screens */
+  .nav-links { display: none; } /* Hide links, can be shown in a mobile menu later */
+  .nav-right { gap: var(--space-2); }
 }
 #main-nav.hidden { display: none; }
 .nav-brand {
@@ -251,6 +259,17 @@
   padding: var(--space-8) var(--space-6);
   align-items: start;
 }
+@media (max-width: 992px) {
+  .page-with-sidebar {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: var(--space-6) var(--space-4);
+  }
+  .sidebar {
+    position: static;
+    order: 2;
+  }
+}
 
 /* ── Sidebar ── */
 .sidebar {
@@ -294,6 +313,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-4);
+}
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
 }
 .stat-card {
   background: var(--clr-bg-card);

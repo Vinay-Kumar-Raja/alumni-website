@@ -99,6 +99,24 @@
   --max-w:     1280px;
 }
 
+/* ── Responsive Design Tokens ── */
+@media (max-width: 768px) {
+  :root {
+    --fs-3xl: 1.5rem;
+    --fs-4xl: 1.875rem;
+    --fs-5xl: 2.25rem;
+    --fs-6xl: 3rem;
+    --fs-7xl: 3.5rem;
+
+    --space-12: 2rem;
+    --space-16: 3rem;
+    --space-20: 4rem;
+    --space-24: 5rem;
+    
+    --nav-h: 60px;
+  }
+}
+
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

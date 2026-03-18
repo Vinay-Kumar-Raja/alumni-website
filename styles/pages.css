@@ -11,9 +11,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--space-16) var(--space-6);
+  padding: var(--space-20) var(--space-6);
   position: relative;
   background: var(--grad-hero);
+}
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: auto;
+    padding: var(--space-24) var(--space-4);
+  }
 }
 .hero-badge {
   display: inline-flex;
@@ -138,16 +144,19 @@
 }
 .auth-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 960px;
-  width: 100%;
-  gap: 0;
-  background: var(--clr-bg-2);
-  border: 1px solid var(--clr-border-bright);
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-glow), var(--shadow-lg);
   animation: scaleIn 0.5s var(--transition-spring);
+}
+@media (max-width: 768px) {
+  .auth-split {
+    grid-template-columns: 1fr;
+    border-radius: var(--radius-xl);
+  }
+  .auth-showcase {
+    display: none; /* Hide showcase on mobile to save space */
+  }
+  .auth-form-panel {
+    padding: var(--space-8) var(--space-6);
+  }
 }
 .auth-showcase {
   background: linear-gradient(160deg, rgba(15, 76, 129, 0.08) 0%, rgba(234, 179, 8, 0.08) 50%, rgba(2, 132, 199, 0.05) 100%);
@@ -243,13 +252,19 @@
   background: linear-gradient(135deg, rgba(15, 76, 129, 0.08) 0%, rgba(234, 179, 8, 0.05) 100%);
   border: 1px solid var(--clr-border-bright);
   border-radius: var(--radius-2xl);
-  padding: var(--space-8);
-  margin-bottom: var(--space-6);
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
   position: relative;
   overflow: hidden;
+}
+@media (max-width: 768px) {
+  .dashboard-welcome {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-6);
+    gap: var(--space-4);
+  }
+  .dashboard-welcome::after {
+    display: none;
+  }
 }
 .dashboard-welcome::after {
   content: '🎓';
@@ -265,6 +280,11 @@
   display: grid;
   grid-template-columns: 1fr 360px;
   gap: var(--space-6);
+}
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .upcoming-events-list { display: flex; flex-direction: column; gap: var(--space-3); }
 .upcoming-event-item {
@@ -323,6 +343,11 @@
   gap: var(--space-8);
   max-width: 1020px;
   margin: 0 auto;
+}
+@media (max-width: 992px) {
+  .feed-layout {
+    grid-template-columns: 1fr;
+  }
 }
 .stories-bar {
   display: flex;
@@ -519,6 +544,17 @@
   grid-template-columns: 300px 1fr;
   height: calc(100vh - var(--nav-h));
   overflow: hidden;
+}
+@media (max-width: 768px) {
+  .chat-layout {
+    grid-template-columns: 1fr;
+  }
+  .chat-sidebar {
+    display: var(--chat-sidebar-display, flex);
+  }
+  .chat-main {
+    display: var(--chat-main-display, none);
+  }
 }
 .chat-sidebar {
   border-right: 1px solid var(--clr-border);
@@ -759,6 +795,26 @@
   grid-template-columns: 220px 1fr;
   min-height: calc(100vh - var(--nav-h));
 }
+@media (max-width: 850px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+  .admin-sidebar {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--clr-border);
+    flex-direction: row;
+    overflow-x: auto;
+    padding: var(--space-2);
+  }
+  .admin-nav-link {
+    white-space: nowrap;
+    width: auto;
+  }
+  .admin-content {
+    padding: var(--space-4);
+  }
+}
 .admin-sidebar {
   background: var(--clr-surface);
   border-right: 1px solid var(--clr-border);
@@ -824,22 +880,48 @@
 .events-hero h1 { color: var(--clr-text); }
 .events-hero p { color: var(--clr-text-muted); }
 
+
 /* ═══════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE OVERRIDES
 ═══════════════════════════════════════ */
 @media (max-width: 1024px) {
   .dashboard-grid { grid-template-columns: 1fr; }
   .feed-layout { grid-template-columns: 1fr; }
   .feed-layout .feed-sidebar { display: none; }
 }
+
 @media (max-width: 768px) {
   .auth-split { grid-template-columns: 1fr; }
   .auth-showcase { display: none; }
+  
   .page-with-sidebar { grid-template-columns: 1fr; }
-  .sidebar { display: none; }
+  .sidebar { 
+    position: static;
+    order: 2;
+  }
+  
   .nav-links { display: none; }
+  
+  /* Chat Mobile */
   .chat-layout { grid-template-columns: 1fr; }
+  .chat-sidebar { display: flex !important; }
+  .chat-main { display: none !important; }
+  /* When a chat is active, we would ideally toggle these via JS. 
+     For now, we ensure the sidebar is the default view. */
+  
+  /* Admin Mobile */
   .admin-layout { grid-template-columns: 1fr; }
-  .admin-sidebar { display: none; }
-  :root { --nav-h: 60px; }
+  .admin-sidebar { 
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    padding: var(--space-2);
+    border-right: none;
+    border-bottom: 1px solid var(--clr-border);
+    position: static;
+  }
+  .admin-nav-link { 
+    white-space: nowrap;
+    padding: var(--space-2) var(--space-4);
+  }
 }
