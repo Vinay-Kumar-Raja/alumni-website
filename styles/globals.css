@@ -7,40 +7,38 @@
 /* ── CSS Custom Properties (Design Tokens) ── */
 :root {
   /* Colors */
-  --clr-bg:          #f8fafc;
+  --clr-bg:          #f5f5f7; /* Apple signature light gray */
   --clr-bg-2:        #ffffff;
-  --clr-bg-card:     rgba(255, 255, 255, 0.9);
-  --clr-surface:     rgba(241, 245, 249, 0.8);
+  --clr-bg-card:     #ffffff;
+  --clr-surface:     rgba(0, 0, 0, 0.05); /* Very subtle surface */
   --clr-border:      rgba(0, 0, 0, 0.1);
-  --clr-border-bright: rgba(0, 0, 0, 0.2);
+  --clr-border-bright: rgba(0, 0, 0, 0.15);
 
-  --clr-primary:     #0f4c81; /* Classic Blue */
-  --clr-primary-2:   #1e3a8a; /* Dark Blue */
-  --clr-accent:      #eab308; /* Gold/Yellow */
-  --clr-accent-2:    #ca8a04;
-  --clr-gold:        #f59e0b;
-  --clr-sky:         #0284c7;
+  --clr-primary:     #0066cc; /* Apple Blue */
+  --clr-primary-2:   #004499;
+  --clr-accent:      #0071e3;
+  --clr-accent-2:    #0077ed;
+  --clr-black:       #1d1d1f; /* Apple text black */
 
-  --clr-text:        #0f172a;
-  --clr-text-muted:  #475569;
-  --clr-text-dim:    #64748b;
+  --clr-text:        #1d1d1f;
+  --clr-text-muted:  #86868b;
+  --clr-text-dim:    #a1a1a6;
 
-  --clr-success:     #10b981;
-  --clr-warning:     #f59e0b;
-  --clr-error:       #ef4444;
-  --clr-info:        #3b82f6;
+  --clr-success:     #28cd41;
+  --clr-warning:     #ff9f0a;
+  --clr-error:       #ff3b30;
+  --clr-info:        #007aff;
 
-  /* Gradients */
-  --grad-primary:    linear-gradient(135deg, #0f4c81 0%, #1e3a8a 100%);
-  --grad-card:       linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(241,245,249,0.5) 100%);
-  --grad-hero:       radial-gradient(ellipse at 60% 0%, rgba(15, 76, 129, 0.08) 0%, transparent 60%), 
-                     radial-gradient(ellipse at 0% 80%, rgba(234, 179, 8, 0.08) 0%, transparent 50%);
-  --grad-accent:     linear-gradient(135deg, #eab308, #ca8a04);
-  --grad-glow:       0 0 40px rgba(15, 76, 129, 0.15), 0 0 80px rgba(15, 76, 129, 0.05);
+  /* Gradients - Minimalist unlike SB */
+  --grad-primary:    none; 
+  --grad-card:       none;
+  --grad-hero:       none;
+  --grad-accent:     none;
+  --grad-glow:       none;
 
-  /* Typography */
-  --font-sans:       'Inter', system-ui, -apple-system, sans-serif;
-  --font-display:    'Space Grotesk', 'Inter', sans-serif;
+  /* Typography - San Francisco style */
+  --font-sans:       -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'Inter', sans-serif;
+  --font-display:    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
 
   --fs-xs:    0.75rem;
   --fs-sm:    0.875rem;
@@ -68,20 +66,20 @@
   --space-20: 5rem;
   --space-24: 6rem;
 
-  /* Border Radius */
-  --radius-sm:  0.375rem;
-  --radius-md:  0.75rem;
-  --radius-lg:  1rem;
-  --radius-xl:  1.5rem;
-  --radius-2xl: 2rem;
+  /* Border Radius - Larger Apple radii */
+  --radius-sm:  0.5rem;
+  --radius-md:  12px;
+  --radius-lg:  18px;
+  --radius-xl:  28px;
+  --radius-2xl: 32px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm:  0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-glow: 0 0 20px rgba(15, 76, 129, 0.15);
-  --shadow-glow-accent: 0 0 20px rgba(234, 179, 8, 0.15);
+  /* Shadows - Subtle Apple shadows */
+  --shadow-sm:  0 1px 2px 0 rgba(0,0,0,0.05);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg:  0 12px 24px rgba(0,0,0,0.08);
+  --shadow-glow: none;
+  --shadow-glow-accent: none;
 
   /* Transitions */
   --transition-fast:   0.15s ease;

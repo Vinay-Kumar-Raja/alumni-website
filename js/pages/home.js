@@ -6,65 +6,55 @@
 const HomePage = (() => {
   function render() {
     return `
-      <div class="home-hero page-enter">
+      <div class="home-hero page-enter" style="background:var(--clr-bg);min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;">
         <div>
-          <div class="hero-badge">🌱 <span>Educating India's Underrepresented</span></div>
-          <h1 class="hero-title text-gradient" style="font-size: clamp(var(--fs-4xl), 7vw, var(--fs-6xl));">From Invisible to<br/>Unstoppable</h1>
-          <p class="hero-subtitle">Creating a Legacy of Hope. Connect with the global Shanti Bhavan family and continue the mission of giving back.</p>
-          <div class="hero-cta">
-            <button class="btn btn-primary btn-lg btn-round" onclick="Router.go('/login')">Get Started →</button>
-            <button class="btn btn-ghost btn-lg btn-round" onclick="scrollToFeatures()">See Features</button>
+          <h1 class="hero-title" style="font-size: clamp(var(--fs-4xl), 8vw, var(--fs-7xl)); font-weight:700; color:var(--clr-text); line-height:1.1; letter-spacing:-0.02em;">Alumni. Reimagined.</h1>
+          <p class="hero-subtitle" style="font-size:var(--fs-xl); color:var(--clr-text-muted); max-width:600px; margin:var(--space-6) auto var(--space-10); font-weight:500;">The platform for the Shanti Bhavan family. Connect, mentor, and grow together.</p>
+          <div class="hero-cta" style="display:flex; gap:var(--space-4); justify-content:center;">
+            <button class="btn btn-primary btn-lg btn-round" onclick="Router.go('/login')" style="padding:0.8rem 2.5rem; font-size:var(--fs-base);">Get Started</button>
+            <button class="btn btn-ghost btn-lg btn-round" onclick="scrollToFeatures()" style="padding:0.8rem 2.5rem; font-size:var(--fs-base); border-color:var(--clr-primary); color:var(--clr-primary);">Learn more ></button>
           </div>
-        </div>
-        <div class="hero-scroll">
-          <span>Scroll to explore</span>
-          <span class="scroll-arrow">↓</span>
         </div>
       </div>
 
-      <section class="home-stats" id="home-stats">
-        <div class="stats-grid" style="max-width:var(--max-w);margin:0 auto">
-          <div class="stat-card animate-fadeUp stagger-1">
-            <div class="stat-icon" aria-hidden="true">🕊️</div>
-            <div class="stat-value" data-count="15000" data-suffix="+">0+</div>
-            <div class="stat-label">Lives Transformed</div>
+      <section class="home-stats" id="home-stats" style="padding:var(--space-20) 0; background:#fff;">
+        <div class="stats-grid" style="max-width:var(--max-w);margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:var(--space-12); padding:0 var(--space-6);">
+          <div class="stat-card animate-fadeUp stagger-1" style="background:none; box-shadow:none; padding:0; text-align:center;">
+            <div class="stat-value" data-count="15000" data-suffix="+" style="font-size:var(--fs-6xl); color:var(--clr-text); font-weight:700;">0+</div>
+            <div class="stat-label" style="font-size:var(--fs-lg); font-weight:600; color:var(--clr-text-muted);">Lives Transformed</div>
           </div>
-          <div class="stat-card animate-fadeUp stagger-2">
-            <div class="stat-icon" aria-hidden="true">🏫</div>
-            <div class="stat-value" data-count="2" data-suffix="">0</div>
-            <div class="stat-label">Schools Built</div>
+          <div class="stat-card animate-fadeUp stagger-2" style="background:none; box-shadow:none; padding:0; text-align:center;">
+            <div class="stat-value" data-count="2" data-suffix="" style="font-size:var(--fs-6xl); color:var(--clr-text); font-weight:700;">0</div>
+            <div class="stat-label" style="font-size:var(--fs-lg); font-weight:600; color:var(--clr-text-muted);">Schools Built</div>
           </div>
-          <div class="stat-card animate-fadeUp stagger-3">
-            <div class="stat-icon" aria-hidden="true">🌍</div>
-            <div class="stat-value" data-count="25" data-suffix="+">0+</div>
-            <div class="stat-label">Countries Represented</div>
+          <div class="stat-card animate-fadeUp stagger-3" style="background:none; box-shadow:none; padding:0; text-align:center;">
+            <div class="stat-value" data-count="25" data-suffix="+" style="font-size:var(--fs-6xl); color:var(--clr-text); font-weight:700;">0+</div>
+            <div class="stat-label" style="font-size:var(--fs-lg); font-weight:600; color:var(--clr-text-muted);">Countries Represented</div>
           </div>
-          <div class="stat-card animate-fadeUp stagger-4">
-            <div class="stat-icon" aria-hidden="true">🤝</div>
-            <div class="stat-value" data-count="100" data-suffix="%">0%</div>
-            <div class="stat-label">Commitment to Giving Back</div>
+          <div class="stat-card animate-fadeUp stagger-4" style="background:none; box-shadow:none; padding:0; text-align:center;">
+            <div class="stat-value" data-count="100" data-suffix="%" style="font-size:var(--fs-6xl); color:var(--clr-text); font-weight:700;">0%</div>
+            <div class="stat-label" style="font-size:var(--fs-lg); font-weight:600; color:var(--clr-text-muted);">Commitment</div>
           </div>
         </div>
       </section>
 
-      <section class="home-features" id="features-section">
-        <div style="max-width:var(--max-w);margin:0 auto">
-          <div class="section-label">What we offer</div>
-          <h2 style="font-family:var(--font-display);font-size:var(--fs-4xl);font-weight:800;margin-bottom:var(--space-3)">Everything you need to<br/><span class="text-gradient">stay connected</span></h2>
-          <p style="color:var(--clr-text-muted);max-width:500px;margin:0 auto">Rediscover classmates, celebrate achievements, attend exclusive events, and build your professional network.</p>
-          <div class="features-grid">
+      <section class="home-features" id="features-section" style="padding:var(--space-20) 0; background:var(--clr-bg);">
+        <div style="max-width:var(--max-w);margin:0 auto; padding:0 var(--space-6);">
+          <div class="section-label" style="text-align:center; color:var(--clr-text-muted); font-weight:600; letter-spacing:0.05em; margin-bottom:var(--space-4);">Features</div>
+          <h2 style="font-family:var(--font-display);font-size:clamp(var(--fs-3xl), 5vw, var(--fs-5xl));font-weight:700;margin-bottom:var(--space-12);text-align:center;color:var(--clr-text);letter-spacing:-0.01em;">Everything you need to<br/>stay connected</h2>
+          <div class="features-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:var(--space-8);">
             ${[
-              { icon:'📸', title:'Alumni Feed', desc:'Share milestones, post updates, like and comment — stay connected with the Shanti Bhavan family.'},
-              { icon:'💬', title:'Mentorship Chat', desc:'Group channels and direct messages to mentor upcoming graduates or connect with peers.'},
-              { icon:'📅', title:'Events & RSVP', desc:'Discover reunions, webinars, and volunteer opportunities. One-click RSVP.'},
-              { icon:'🛡️', title:'Verified Community', desc:'Admin-approved members only. Your network stays trustworthy and secure.'},
-              { icon:'🔍', title:'Alumni Directory', desc:'Search and filter alumni by batch, college, company, and location.'},
-              { icon:'🤲', title:'Give Back Portal', desc:'Find ways to give back, sponsor a child, or help with Shanti Bhavan 2.'}
+              { icon:'📸', title:'Alumni Feed', desc:'Milestones, updates, and shared achievements in one place.'},
+              { icon:'💬', title:'Mentorship', desc:'Direct lines to mentor graduates or connect with industry peers.'},
+              { icon:'📅', title:'Events', desc:'Reunions, webinars, and volunteer opportunities with one-click RSVP.'},
+              { icon:'🛡️', title:'Secure Community', desc:'Admin-approved members only. A trustworthy space for alumni.'},
+              { icon:'🔍', title:'Directory', desc:'Search alumni by batch, college, company, or current location.'},
+              { icon:'🤲', title:'Give Back', desc:'Direct pathways to support Shanti Bhavan’s future mission.'}
             ].map(f => `
-              <div class="feature-card">
-                <div class="feature-icon" aria-hidden="true">${f.icon}</div>
-                <h3 class="feature-title">${f.title}</h3>
-                <p class="feature-desc">${f.desc}</p>
+              <div class="feature-card" style="background:#fff; border-radius:var(--radius-xl); padding:var(--space-10); border:none; box-shadow:var(--shadow-md); transition:transform var(--transition-base), box-shadow var(--transition-base); text-align:left;">
+                <div class="feature-icon" style="font-size:2.5rem; margin-bottom:var(--space-6);">${f.icon}</div>
+                <h3 class="feature-title" style="font-size:var(--fs-xl); font-weight:700; color:var(--clr-text); margin-bottom:var(--space-3);">${f.title}</h3>
+                <p class="feature-desc" style="color:var(--clr-text-muted); font-size:var(--fs-base); line-height:1.5;">${f.desc}</p>
               </div>`).join('')}
           </div>
         </div>

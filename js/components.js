@@ -69,14 +69,12 @@ const Components = (() => {
     const unreadCount = (Store.get('notifications')[session.userId] || []).filter(n => !n.read).length;
 
     nav.innerHTML = `
-      <div class="nav-brand" onclick="Router.go('/dashboard')">
-        <div class="brand-icon">🌱</div>
-        <span class="text-gradient" style="font-weight: 800; font-family: var(--font-display);">Shanti Bhavan Alumni</span>
+      <div class="nav-brand" onclick="Router.go('/dashboard')" style="display:flex; align-items:center; gap:var(--space-2);">
+        <span style="font-weight: 700; font-family: var(--font-display); color: var(--clr-text); font-size:var(--fs-lg); letter-spacing:-0.03em;">Alumni <span style="font-weight:500; color:var(--clr-text-muted);">Network</span></span>
       </div>
-      <div class="nav-links">
+      <div class="nav-links" style="justify-content:center;">
         ${links.map(l => `
-          <button class="nav-link ${Router.current() === l.path ? 'active' : ''}" onclick="Router.go('${l.path}')" aria-label="${l.label}">
-            <span class="nav-icon" aria-hidden="true">${l.icon}</span>
+          <button class="nav-link ${Router.current() === l.path ? 'active' : ''}" onclick="Router.go('${l.path}')" aria-label="${l.label}" style="background:none; border:none; padding:var(--space-2) var(--space-4); font-weight:500; font-size:var(--fs-xs); color:var(--clr-text-muted); opacity:0.8; transition:opacity 0.2s;">
             <span>${l.label}</span>
           </button>
         `).join('')}
